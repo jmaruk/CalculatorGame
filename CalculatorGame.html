@@ -77,50 +77,63 @@ $(document).ready(function(){
 
 // Your code here...
 
-var firstNumber ;
+var firstNumber = [] ;
 var operator ;
-var secondNumber ;
+var secondNumber = [];
 var result ;
 
-// Listen for a click on each button
- $(".number").on("click", function() {
-   primaryNumber = $(this).attr("value")
-  $("#first-number").append(primaryNumber)
-  firstNumber.push(primaryNumber); 
-  var stringNumber = firstNumber.join("") 
+// Listen for a click on a numberer button
+$(".number").on("click", function() {
+  primaryNumber = $(this).attr("value");
+  $("#first-number").append(primaryNumber);
+  firstNumber.push(primaryNumber);
+  var stringNumber = firstNumber.join("");
   console.log(stringNumber);
 });
 
 $(".operator").on("click", function() {
-   operator = $(this).attr("value")
-  $("#first-number").append(operator)
-  firstNumber.push(primaryNumber); 
-
-  console.log(stringNumber);
-
- 
- 
-$(".clear").on("click", function() {
-  $("#first-number").empty();
-  $("#operator").empty();
-  $("#second-number").empty();
-  $("#result").empty();
-})
+  operator = $(this).find("h1").html();
+  $("#operator").html(operator);
+  console.log(operator);
 });
-// Pass the value for the button into the calculator viewport
-// Combine the numbers in the element array into a single string of numbers
-// Listen for a Math function button
-// Pass the Math function button value into the calulator viewport
-// Listen for a click on a number button
+
+$(".number").on("click", function() {
+  secondaryNumber = $(this).attr("value");
+  $("#second-number").append(secondaryNumber);
+  secondNumber.push(secondaryNumber);
+  var stringNumber = secondNumber.join("");
+  console.log(stringNumber);
+});
+
+$(".clear").on("click", function() {
+    $("#first-number").empty();
+    $("#operator").empty();
+    $("#second-number").empty();
+    $("#result").empty();
+})
+
+$(".equal").on("click", function() {
+    var firstString = firstNumber.join("");
+    var secondString = secondNumber.join("");
+    result = firstString + operator + secondString;
+    console.log(result);
+})
+
+
+
+
+
+// Pass the value from the button into the calculator viewport
+// Combine the numbers in the viewport into a single string of numbers
+// Listen for a math function button
+// Pass that math function button value into the calculator viewport
+// Listen for a click on a numberer button
 // Pass the value from the button into the calculator viewport
 // Combine the numbers in the viewport into a single string of numbers
 // Listen for the Equals button
 // Pass the first number, math function, and second number into a result variable
 // Print the result variable in the result div
-// Clear the function clears the calculator divs and stored value
-
-
-//Create a general strategy for how you will accomplish the task:
+// Clear function clears the calculator divs and stored values
 
 //How will you capture button clicks?
 //What will you do with the numbers clicked?
@@ -128,10 +141,6 @@ $(".clear").on("click", function() {
 //How will you differentiate numbers from operators?
 //How will you know the “value” of a number clicked?
 //How will you know when a user is done entering the first number?
-//Etc.
-//Create a few test “on-click” events. These could just trigger Alert 
-//messages for now. If you get further along, then have these buttons 
-//alert their “value”.
 
 });
 
