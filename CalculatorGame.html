@@ -91,12 +91,14 @@ $(".number").on("click", function() {
   console.log(stringNumber);
 });
 
+// Listen for clicks on operators and replace the existing operator on each click
 $(".operator").on("click", function() {
   operator = $(this).find("h1").html();
   $("#operator").html(operator);
   console.log(operator);
 });
 
+// Set the secondNumber div to second number values
 $(".number").on("click", function() {
   secondaryNumber = $(this).attr("value");
   $("#second-number").append(secondaryNumber);
@@ -105,19 +107,21 @@ $(".number").on("click", function() {
   console.log(stringNumber);
 });
 
+// Clear function that resets the calculator to empty
 $(".clear").on("click", function() {
     $("#first-number").empty();
     $("#operator").empty();
     $("#second-number").empty();
     $("#result").empty();
-})
+});
 
+// Click on equals button to combine firstNumber, operator, and secondNumber into an equation
 $(".equal").on("click", function() {
     var firstString = firstNumber.join("");
     var secondString = secondNumber.join("");
     result = firstString + operator + secondString;
     console.log(result);
-})
+});
 
 
 
