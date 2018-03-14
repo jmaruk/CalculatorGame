@@ -92,8 +92,8 @@ $(".number").on("click", function() {
 });
 
 $(".operator").on("click", function() {
-  operator = $(this).attr("value");
-  $("#operator").append(operator);
+  operator = $(this).find("h1").html();
+  $("#operator").html(operator);
   console.log(operator);
 });
 
@@ -104,6 +104,24 @@ $(".number").on("click", function() {
   var stringNumber = secondNumber.join("");
   console.log(stringNumber);
 });
+
+$(".clear").on("click", function() {
+    $("#first-number").empty();
+    $("#operator").empty();
+    $("#second-number").empty();
+    $("#result").empty();
+})
+
+$(".equal").on("click", function() {
+    var firstString = firstNumber.join("");
+    var secondString = secondNumber.join("");
+    result = firstString + operator + secondString;
+    console.log(result);
+})
+
+
+
+
 
 // Pass the value from the button into the calculator viewport
 // Combine the numbers in the viewport into a single string of numbers
