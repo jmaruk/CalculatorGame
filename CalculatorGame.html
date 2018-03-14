@@ -77,35 +77,40 @@ $(document).ready(function(){
 
 // Your code here...
 
+var btn = $(".btn");
 var firstNumber = [] ;
 var operator ;
 var secondNumber = [];
 var result ;
+var numbArray = ["0","1","2","3","4","5","6","7","8","9"];
+var opArray = ["+","-","x","÷","=","^"];
 
 // Listen for a click on a numberer button
-$(".number").on("click", function() {
-  primaryNumber = $(this).attr("value");
-  $("#first-number").append(primaryNumber);
-  firstNumber.push(primaryNumber);
-  var stringNumber = firstNumber.join("");
-  console.log(stringNumber);
-});
+
+
+// $(".number").on("click", function() {
+//   primaryNumber = $(this).attr("value");
+//   $("#first-number").append(primaryNumber);
+//   firstNumber.push(primaryNumber);
+//   var stringNumber = firstNumber.join("");
+//   console.log(stringNumber);
+// });
 
 // Listen for clicks on operators and replace the existing operator on each click
-$(".operator").on("click", function() {
-  operator = $(this).find("h1").html();
-  $("#operator").html(operator);
-  console.log(operator);
-});
+// $(".operator").on("click", function() {
+//   operator = $(this).find("h1").html();
+//   $("#operator").html(operator);
+//   console.log(operator);
+// });
 
 // Set the secondNumber div to second number values
-$(".number").on("click", function() {
-  secondaryNumber = $(this).attr("value");
-  $("#second-number").append(secondaryNumber);
-  secondNumber.push(secondaryNumber);
-  var stringNumber = secondNumber.join("");
-  console.log(stringNumber);
-});
+// $(".number").on("click", function() {
+//   secondaryNumber = $(this).attr("value");
+//   $("#second-number").append(secondaryNumber);
+//   secondNumber.push(secondaryNumber);
+//   var stringNumber = secondNumber.join("");
+//   console.log(stringNumber);
+// });
 
 // Clear function that resets the calculator to empty
 $(".clear").on("click", function() {
@@ -113,19 +118,43 @@ $(".clear").on("click", function() {
     $("#operator").empty();
     $("#second-number").empty();
     $("#result").empty();
+    var firstNumber = [] ;
+    var operator ;
+    var secondNumber = [];
+    var result ;
 });
 
 // Click on equals button to combine firstNumber, operator, and secondNumber into an equation
 $(".equal").on("click", function() {
     var firstString = firstNumber.join("");
     var secondString = secondNumber.join("");
-    result = firstString + operator + secondString;
+    result = parseFloat(firstString) + (operator) + parseFloat(secondString);
     console.log(result);
 });
 
+$(".btn").on("click", function() {
+  var button = $(this).attr("value");
+  if($.isNumeric(button) && button.firstNumber == null) {
+    primaryNumber = $(button).attr("value");
+    $("#first-number").append(primaryNumber);
+    firstNumber.push(primaryNumber);
+    var stringNumber = firstNumber.join("");
+    console.log(stringNumber);
+  } 
+    else if ($.isNumeric(button) == false) {
+    operator = $(button).find("h1").html();
+    $("#operator").html(operator);
+    console.log(operator);
+  } 
+    else {
+    secondaryNumber = $(button).attr("value");
+    $("#second-number").append(secondaryNumber);
+    secondNumber.push(secondaryNumber);
+    var stringNumber = secondNumber.join("");
+    console.log(stringNumber);
+  };
 
-
-
+  }); 
 
 // Pass the value from the button into the calculator viewport
 // Combine the numbers in the viewport into a single string of numbers
