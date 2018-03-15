@@ -113,9 +113,6 @@ $(".operator").on("click", function() {
   console.log(operator);
 });
 
-// Set the secondNumber div to second number values
-
-
 // Clear function that resets the calculator to empty
 $(".clear").on("click", function() {
     $("#first-number").empty();
@@ -132,8 +129,19 @@ $(".clear").on("click", function() {
 $(".equal").on("click", function() {
     var firstString = firstNumber.join("");
     var secondString = secondNumber.join("");
-    result = parseFloat(firstString) + (operator) + parseFloat(secondString);
+    if (operator === "+") {
+      result = parseFloat(firstString) + parseFloat(secondString);
+    } else if (operator === "-") {
+      result = parseFloat(firstString) - parseFloat(secondString);
+    } else if (operator === "x") {
+      result = parseFloat(firstString) * parseFloat(secondString);
+    } else if (operator === "÷") {
+      result = parseFloat(firstString) / parseFloat(secondString);
+    } else if (operator === "^") {
+      result = parseFloat(firstString) ^ parseFloat(secondString);
+    }
     console.log(result);
+    $("#result").html(result);
 }); 
 
 // Pass the value from the button into the calculator viewport
