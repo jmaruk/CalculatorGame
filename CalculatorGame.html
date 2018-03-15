@@ -72,11 +72,8 @@
   </div>
 
 <script type="text/javascript">
-
 $(document).ready(function(){
-
 // Your code here...
-
 var btn = $(".btn");
 var firstNumber = [] ;
 var operator ;
@@ -84,10 +81,7 @@ var secondNumber = [];
 var result ;
 var numbArray = ["0","1","2","3","4","5","6","7","8","9"];
 var opArray = ["+","-","x","÷","=","^"];
-
 // Listen for a click on a numberer button
-
-
 $(".number").on("click", function checkNum() {
   if (operator == null) {
     primaryNumber = $(this).attr("value");
@@ -105,45 +99,44 @@ $(".number").on("click", function checkNum() {
       });
     }
 });
-
 // Listen for clicks on operators and replace the existing operator on each click
 $(".operator").on("click", function() {
   operator = $(this).find("h1").html();
+  operatorString = $(this).attr("value")
   $("#operator").html(operator);
-  console.log(operator);
+  console.log(operatorString);
 });
-
 // Clear function that resets the calculator to empty
 $(".clear").on("click", function() {
     $("#first-number").empty();
     $("#operator").empty();
     $("#second-number").empty();
     $("#result").empty();
-    firstNumber = [] ;
-    operator ;
-    secondNumber = [];
-    result ;
+    firstNumber = [""];
+    firstString = null;
+    operator = null;
+    secondNumber = [""];
+    secondString = null;
+    result = null;
 });
-
 // Click on equals button to combine firstNumber, operator, and secondNumber into an equation
 $(".equal").on("click", function() {
     var firstString = firstNumber.join("");
     var secondString = secondNumber.join("");
-    if (operator === "+") {
+    if (operatorString === "plus") {
       result = parseFloat(firstString) + parseFloat(secondString);
-    } else if (operator === "-") {
+    } else if (operator === "minus") {
       result = parseFloat(firstString) - parseFloat(secondString);
-    } else if (operator === "x") {
+    } else if (operator === "times") {
       result = parseFloat(firstString) * parseFloat(secondString);
-    } else if (operator === "÷") {
+    } else if (operator === "divide") {
       result = parseFloat(firstString) / parseFloat(secondString);
-    } else if (operator === "^") {
+    } else if (operator === "power") {
       result = parseFloat(firstString) ^ parseFloat(secondString);
     }
     console.log(result);
     $("#result").html(result);
 }); 
-
 // Pass the value from the button into the calculator viewport
 // Combine the numbers in the viewport into a single string of numbers
 // Listen for a math function button
@@ -155,16 +148,13 @@ $(".equal").on("click", function() {
 // Pass the first number, math function, and second number into a result variable
 // Print the result variable in the result div
 // Clear function clears the calculator divs and stored values
-
 //How will you capture button clicks?
 //What will you do with the numbers clicked?
 //What will you do when the operator is clicked?
 //How will you differentiate numbers from operators?
 //How will you know the “value” of a number clicked?
 //How will you know when a user is done entering the first number?
-
 });
-
 </script>
 
 </body>
