@@ -76,26 +76,29 @@ $(document).ready(function(){
 // Your code here...
 var btn = $(".btn");
 var firstNumber = [] ;
+var firstString ;
 var operator ;
 var secondNumber = [];
+var secondString ;
 var result ;
 var numbArray = ["0","1","2","3","4","5","6","7","8","9"];
 var opArray = ["+","-","x","÷","=","^"];
+
 // Listen for a click on a numberer button
 $(".number").on("click", function checkNum() {
   if (operator == null) {
     primaryNumber = $(this).attr("value");
     $("#first-number").append(primaryNumber);
     firstNumber.push(primaryNumber);
-    var stringNumber = firstNumber.join("");
-    console.log(stringNumber);
+    firstString = firstNumber.join("");
+    console.log(firstString);
   } else {
       $(".number").on("click", function() {
       secondaryNumber = $(this).attr("value");
       $("#second-number").append(secondaryNumber);
       secondNumber.push(secondaryNumber);
-      var stringNumber = secondNumber.join("");
-      console.log(stringNumber);
+      secondString = secondNumber.join("");
+      console.log(secondString);
       });
     }
 });
@@ -112,17 +115,21 @@ $(".clear").on("click", function() {
     $("#operator").empty();
     $("#second-number").empty();
     $("#result").empty();
-    firstNumber = [""];
+    firstNumber.length = 0;
     firstString = null;
     operator = null;
-    secondNumber = [""];
+    secondNumber.length = 0;
     secondString = null;
     result = null;
+    console.log(firstNumber);
+    console.log(firstString);
+    console.log(operator);
+    console.log(secondNumber);
+    console.log(secondString);
+    console.log(result);
 });
 // Click on equals button to combine firstNumber, operator, and secondNumber into an equation
 $(".equal").on("click", function() {
-    var firstString = firstNumber.join("");
-    var secondString = secondNumber.join("");
     if (operatorString === "plus") {
       result = parseFloat(firstString) + parseFloat(secondString);
     } else if (operator === "minus") {
